@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  padding: 10px;
+  min-height: 100vh;
+}
+
+header,
+nav,
+main,
+aside,
+footer {
+  padding: 16px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+header { background-color: #1877f2; border: 1px solid #0d5bbd; }
+nav { background-color: #4caf50; border: 1px solid #388e3c; }
+main { background-color: #ffffff; color: #333; border: 1px solid #ccc; }
+aside { background-color: #f0f0f0; color: #777; border: 1px dashed #ccc; }
+footer { background-color: #ff9800; border: 1px solid #e68a00; }
+
+@media (min-width: 1025px) {
+  .dashboard-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr 250px;
+    grid-template-rows: 70px 1fr 60px;
+    grid-template-areas:
+      "header header header"
+      "nav    main   reserved"
+      "footer footer footer";
+    gap: 12px;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 90vh;
+  }
+
+  header  { grid-area: header; }
+  nav     { grid-area: nav; }
+  main    { grid-area: main; }
+  aside   { grid-area: reserved; }
+  footer  { grid-area: footer; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px auto 1fr 60px;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "footer";
+    gap: 12px;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 90vh;
+  }
+
+  header  { grid-area: header; }
+  nav     { grid-area: nav; }
+  main    { grid-area: main; }
+  aside   { display: none; }
+  footer  { grid-area: footer; }
+}
+
+@media (max-width: 767px) {
+  .dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "footer";
+    gap: 10px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  header  { grid-area: header; }
+  nav     { grid-area: nav; }
+  main    { grid-area: main; }
+  aside   { display: none; }
+  footer  { grid-area: footer; }
+
+  header, nav, main, footer {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
